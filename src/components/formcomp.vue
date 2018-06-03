@@ -15,7 +15,9 @@
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>{{item.price}}</td>
-          <td><count-text></count-text></td>
+          <td>
+            <!--<count-text></count-text>-->
+          </td>
           <td><input type="button" value="移除"></td>
         </tr>
       </tbody>
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-import CountText from 'counttext.vue'
+import CountText from './counttext.vue'
 export default{
   props: {
     list: {
@@ -55,19 +57,19 @@ export default{
 </script>
 
 <style lang="less">
-  @import "../assets/less/mixin.less";
+  @import "../common/less/mixin.less";
   .form{
-    @widthL;
-    @margin;
-    @textAlign;
+    @widthL();
+    @margin();
+    @textAlign();
     table{
-      @widthM;
-      @margin;
+      @widthM();
+      @margin();
       border-collapse:collapse;
       thead{
         color:#aaa !important;
-        @colorBg;
-        @border;
+        @colorBg();
+        @border();
         tr{
           color:#000;
           height: 50px;
@@ -75,26 +77,24 @@ export default{
       }
       tbody{
         color:#000;
-        td{
-          @borderB;
-          @borderR;
-          &:first-of-type{
-            @borderL;
-            width:60px;
+        tr{
+          height:@height50;
+          td{
+            @borderB();
+            @borderR();
+            &:first-of-type{
+              @borderL();
+              width:60px;
+            }
           }
         }
       }
     }
     .total_price{
-      @widthM;
+      @widthM();
       text-align:left;
       margin:5px auto 0;
     }
   }
-
-
-
-
-
 
 </style>

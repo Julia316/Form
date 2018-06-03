@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './assets/less/mixin.less'
+import './common/less/mixin.less'
 
 Vue.config.productionTip = false
 
