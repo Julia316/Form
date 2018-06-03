@@ -11,12 +11,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in list" :key="item.id">
+        <tr v-for="(item,index) in list" :key="item.id">
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>{{item.price}}</td>
           <td>
-            <!--<count-text></count-text>-->
+            <count-text :count="item.count"  @reduce="reduceNum(index)" @add="addNum(index)"></count-text>
           </td>
           <td><input type="button" value="移除"></td>
         </tr>
@@ -37,11 +37,6 @@ export default{
   components: {
     CountText
   },
-  data: function () {
-    return {
-      countNum: 1
-    }
-  },
   computed: {
     total: function () {
       let total = 0
@@ -51,6 +46,14 @@ export default{
       let arr = total.toLocaleString()
       console.log(arr)
       return arr
+    }
+  },
+  methods: {
+    reduceNum: function (params) {
+      this.$emit('reduceCountHandle', params)
+    },
+    addNum: function (params) {
+      this.$emit('addCountHandle', params)
     }
   }
 }

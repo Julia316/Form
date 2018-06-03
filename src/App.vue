@@ -2,7 +2,7 @@
 <template>
 
   <div id="app">
-    <form-comp :list="list"> </form-comp>
+    <form-comp :list="list" @reduceCountHandle="reduceCount" @addCountHandle="addCount"> </form-comp>
     <div v-if="!list.length">购物车为空</div>
   </div>
 </template>
@@ -37,6 +37,14 @@ export default{
           count: 1
         }
       ]
+    }
+  },
+  methods: {
+    addCount: function (index) {
+      this.list[index].count++
+    },
+    reduceCount: function (index) {
+      this.list[index].count--
     }
   }
 }
